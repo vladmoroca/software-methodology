@@ -1,5 +1,7 @@
 'use strict'
 
+import { readFileSync, existsSync } from "fs";
+
 const GetDiscriminant = (a, b, c) => {
     return b * b - (4 * a * c)
 }
@@ -29,7 +31,7 @@ const QuadraticEquationSolver = (a, b, c) => {
     if(x2 && x2 !== x1) console.log("x2:" + x2)
 }
 
-const Interactive = () => {
+const InteractiveMode = () => {
     const questions = ["a = ", "b = ", "c = "];
     const params = [];
   
@@ -68,4 +70,37 @@ const Interactive = () => {
     process.stdout.write(questions[0]);
   };
 
-Interactive()
+const FormatChecker = (data) => {
+  const regular = /^(\d+(\.\d+)?\s){3}\n/g
+  //console.log(regular.exec(data))
+  console.log(data.match(regular))
+    return regular.test(data)
+}
+
+const FileMode = () => {
+  const filePath = process.argv[2];
+  if (!existsSync(filePath)) {
+    console.log(`Error: file ${filePath} does not exist`);
+    process.exit(1);
+  }
+  const fileData = readFileSync(filePath).toString();
+  if (!FormatChecker(fileData)) {
+    console.log("invalid file format");
+    process.exit(1);
+  }
+  const params = fileData
+    .split("\n")[0]
+    .split(" ")
+    .map((string) => parseFloat(string));
+  if (params[0] === 0) {
+    console.log("Error. a cannot be 0");
+    process.exit(1);
+  }
+  QuadraticEquationSolver(...params);
+};
+
+if (process.argv.length < 3) {
+    InteractiveMode();
+  } else {
+    FileMode();
+  }
