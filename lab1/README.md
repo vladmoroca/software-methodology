@@ -84,4 +84,4 @@ There are 2 roots
 x1:0.8000000000000003
 x2:-4
 ```
-Something unnecesary
+
