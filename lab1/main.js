@@ -71,10 +71,8 @@ const InteractiveMode = () => {
   };
 
 const FormatChecker = (data) => {
-  const regular = /^(\d+(\.\d+)?\s){3}\n/g
-  //console.log(regular.exec(data))
-  console.log(data.match(regular))
-    return regular.test(data)
+  const regular = /^(-?\d+(\.\d+)?\s){3}\n/g
+  return regular.test(data)
 }
 
 const FileMode = () => {
