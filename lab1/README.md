@@ -84,4 +84,7 @@ There are 2 roots
 x1:0.8000000000000003
 x2:-4
 ```
+# Link on Revert Commit
+
+[Revert readme changing](https://github.com/vladmoroca/software-methodology/commit/9706c52c92b04585bc6f056dd27cb1958bcec0f9)
 
