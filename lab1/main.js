@@ -37,8 +37,9 @@ const InteractiveMode = () => {
   
     const checkNumber = (data) => {
       return (
-        data.toString().trim() === parseInt(data.toString()).toString().trim() ||
-        data.toString().trim() === parseFloat(data.toString()).toString().trim()
+        (data.toString().trim() === parseInt(data.toString()).toString().trim() ||
+        data.toString().trim() === parseFloat(data.toString()).toString().trim()) &&
+        data.toString().trim() !== 'NaN'
       );
     };
   
