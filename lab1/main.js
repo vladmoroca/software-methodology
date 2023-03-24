@@ -27,8 +27,8 @@ const QuadraticEquationSolver = (a, b, c) => {
     EquationLog(a, b, c , D)
     const x1 = (-b + Math.sqrt(D)) / (2 * a)
     const x2 = (-b - Math.sqrt(D)) / (2 * a)
-    if(x1) console.log("x1:" + x1)
-    if(x2 && x2 !== x1) console.log("x2:" + x2)
+    if(x1 || x1 === 0) console.log("x1:" + x1)
+    if((x2 || x2 === 0) && x2 !== x1) console.log("x2:" + x2)
 }
 
 const InteractiveMode = () => {
